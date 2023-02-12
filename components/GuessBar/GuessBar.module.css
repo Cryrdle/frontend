@@ -1,0 +1,29 @@
+
+.guessBar{
+    width: 100%;
+    padding: 2rem;
+}
+
+.guessBar_box_headers{
+    border-bottom: 1px dashed;
+    /* display: flex; */
+    /* justify-content: space-between; */
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    padding: 1rem;
+    
+}
+
+.guessBar_box_guesses{
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    text-align: center;
+    padding: 1rem;
+    gap: .5rem;
+}
+
+.guessBar_box_guesses_info{
+    padding: 2rem 0rem;
+    border: 1px solid;
+}
