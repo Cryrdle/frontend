@@ -1,44 +1,58 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image'
+import { GoArrowUp, GoArrowDown } from 'react-icons/go'
 
 // --INTERNAL IMPORT
 import Style from './GuessBar.module.css'
 import images from '../../img'
+import coins from './CoinStatsIndex'
 
-const GuessBar = () => {
-    const categoriesArray = [
-        'Coin',
-        'Type1',
-        'Type2',
-        'Ranking',
-        'Marketcap',
-        'Price',
-        'Age',
-    ]
+var answer = coins['LTC']
 
-    const coinInfo = ['BTC', 'Currency', 'None', '1', '625bb', '$21,875', '11y']
+var correct_count = 0
+
+const GuessBar = (props) => {
+    const [win, setWin] = useState(false)
 
     return (
         <div className={Style.guessBar}>
-            <div className={Style.guessBar_box_headers}>
-                {categoriesArray.map((el, i) => (
-                    <div
-                        className={Style.guessBar_box_guesses_header}
-                        key={i + 1}
-                    >
-                        <span>{el}</span>
-                    </div>
-                ))}
-            </div>
-            <div className={Style.guessBar_box_guesses}>
-                {coinInfo.map((el, i) => (
-                    <div
-                        className={Style.guessBar_box_guesses_info}
-                        key={i + 1}
-                    >
-                        <span>{el}</span>
-                    </div>
-                ))}
+            <div className={Style.guessBar_box}>
+                <div className={Style.guessBar_box_guesses}>
+                    {coins[props.guess].map((el, i) =>
+                        el == answer[i] ? (
+                            <div className={Style.guessBar_correct}>
+                                <span>{el}</span>
+                            </div>
+                        ) : el > answer[i] && i >= 3 ? (
+                            // too high
+                            <div className={Style.guessBar_incorrect}>
+                                <span>{el}</span>
+                                <GoArrowUp
+                                    fill="darkred"
+                                    className={Style.guessBar_incorrect_arrow}
+                                />
+                            </div>
+                        ) : el < answer[i] && i >= 3 ? (
+                            // too low
+                            <div className={Style.guessBar_incorrect}>
+                                <span>{el}</span>
+                                <GoArrowDown
+                                    fill="darkred"
+                                    className={Style.guessBar_incorrect_arrow}
+                                />
+                            </div>
+                        ) : (
+                            // incorrect
+                            <div className={Style.guessBar_incorrect}>
+                                <span>{el}</span>
+                            </div>
+                        )
+                    )}
+                    {/* {coins[props.guess] == answer ? setWin(true) : ''} */}
+                    {/* {win && (
+                        <aside className={Style.DropZone_box_aside}>WIN</aside>
+                    )} */}
+                </div>
             </div>
         </div>
     )
