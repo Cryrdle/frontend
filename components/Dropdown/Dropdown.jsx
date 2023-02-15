@@ -4,6 +4,7 @@ import { GoArrowRight } from 'react-icons/go'
 
 // --INTERNAL IMPORT
 import Style from './Dropdown.module.css'
+import coins from './../GuessBar/CoinStatsIndex'
 
 const dropdownStyle = {
     option: (base, state) => ({
@@ -12,12 +13,15 @@ const dropdownStyle = {
     }),
     control: () => ({
         display: 'flex',
-        padding: '0 0rem 0 0.5rem',
+        padding: '0rem 0rem rem 0.5rem',
+        // padding: '1rem',
     }),
     dropdownIndicator: () => ({
         display: 'none',
     }),
 }
+
+var answer = coins['LTC']
 
 const options = [
     { value: 'BTC', label: 'Bitcoin BTC' },
@@ -30,7 +34,7 @@ const options = [
     { value: 'UNI', label: 'Uniswap UNI' },
 ]
 
-const Dropdown = (props) => {
+const Dropdown = ({ onGuessMade, checkWin }) => {
     const [selectedOption, setSelectedOption] = useState(null)
 
     const handleChange = (selected) => {
@@ -39,7 +43,8 @@ const Dropdown = (props) => {
 
     const handleClick = () => {
         if (selectedOption) {
-            props.onGuessMade(selectedOption.value)
+            onGuessMade(selectedOption.value)
+            checkWin(coins[selectedOption.value] == answer)
         }
     }
 
