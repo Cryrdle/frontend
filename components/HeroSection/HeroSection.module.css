@@ -54,39 +54,20 @@
 
 
 /* GUESS INPUT SECTION */
-.heroSection_box_guess{
+.heroSection_box_dropdown{
     border: 1px solid;
     border-radius: 5rem;
-
-    /* display: flex;
-    justify-content: space-between; */
-    /* align-items: center; */
 }
-/* 
-.heroSection_box_guess_input input{
-    font-size: 1.5rem;
-    background-color: transparent;
-    border: None;
-    padding: 1rem 7rem 1rem 1.5rem;
-} */
-
-/* .heroSection_box_guess_arrow{
-    font-size: 4rem;
-    line-height: 0;
-    cursor: pointer;
-    object-position: right;
-    padding-right: .5rem;
-} */
 
 /* GUESSES + REVEAL SECTION */
-.heroSection_box_guessBar_headers_box{
+.heroSection_guessBar_headers_box{
     width: 100%;
     text-align: center;
     display: flex;
     justify-content: center;
 }
 
-.heroSection_box_guessBar_headers{
+.heroSection_guessBar_headers{
     width: 60%;
     border-bottom: 1px dashed;
     display: grid;
@@ -103,3 +84,78 @@
     align-items: center;
     padding: 2rem;
 } */
+
+
+.winScreen{
+    width: 100%;
+    display: flex;
+    text-align: center;
+}
+
+.winScreen_box{
+    box-shadow: var(--box-shadow);
+    background-color: var(--main-bg-color);
+    padding: 2rem;
+    border-radius: 2rem;
+    z-index: 2222;
+    margin: 3rem auto;
+    top: 5rem;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.winScreen_btn_X{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.winScreen_btn_X button{ 
+    border: none;
+    border-radius: 50%;
+    background-color: var(--main-bg-color);
+    font-size: 1.5rem;
+    margin-bottom: -2rem;
+    cursor: pointer;
+}
+
+.winScreen_box_congrats h1{
+    font-size: 2.5rem;
+}
+
+.winScreen_box_congrats h3{
+    font-size: 1.5rem;
+}
+
+.winScreen_box_congrats p{
+    font-size: 1rem;
+    line-height: 0.5rem;
+}
+
+.winScreen_box_submit_win{
+    padding: 2rem;
+}
+
+.winScreen_box_submit_win button{
+    background-color: var(--main-bg-color);
+    box-shadow: var(--box-shadow);
+    border: 1px solid black;
+    border-radius: 2rem;
+    padding: 1rem;
+    width: 10rem;
+
+    cursor: pointer;
+}
+
+.winScreen_box_submit_win button:hover{
+    transition: all 0.3s ease-in-out;
+    scale: 1.1;
+}
+
+.winScreen_box_LB_list{
+    line-height: 0.5rem;
+}
+
+.winScreen_box_LB_list_item{
+    padding: .1rem 
+}
