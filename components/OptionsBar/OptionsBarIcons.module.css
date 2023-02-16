@@ -4,12 +4,13 @@
 .icon_menu{
   position: absolute;
   top: 12rem;
-  left: 36rem;
+  left: 45rem;
   padding: 1rem;
   box-shadow: var(--box-shadow);
   width: 15rem;
   border-radius: 1rem;
   background-color: var(--main-bg-color);
+  z-index: 999;
 
 }
 

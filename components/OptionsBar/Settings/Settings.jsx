@@ -1,7 +1,10 @@
 import React from 'react'
 
+// --INTERNAL IMPORT
+import Style from '../OptionsBarIcons.module.css'
+
 const Settings = () => {
-    return <div>Settings</div>
+    return
 }
 
 export default Settings
