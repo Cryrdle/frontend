@@ -38,9 +38,19 @@
     gap: 2rem;
 }
 
+.heroSection_box_icons_icon_fi,
 .heroSection_box_icons_icon{
     font-size: 2rem;
     cursor: pointer;
+}
+.heroSection_box_icons_icon_fi:hover,
+.heroSection_box_icons_icon:hover{
+    transition: all 0.1s ease-in;
+    scale: 1.1;
+}
+
+.heroSection_box_icons_icon_fi{
+    margin-bottom: 0.8rem;
 }
 
 .heroSection_box_message{
@@ -52,6 +62,29 @@
     margin: 2rem 0;
 }
 
+/* CONNECT BUTTON */
+.heroSection_box_connect{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.heroSection_box_connect_btn{
+    background-color: var(--icons-color);
+    color: var(--main-bg-color);
+    /* border: none; */
+    border: 1px solid black;
+    border-radius: 5rem;
+    padding: 1rem;
+    width: 90%;
+    cursor: pointer;
+}
+
+.heroSection_box_connect_btn:hover{
+    transition: all 0.3s ease-in;
+    scale: 1.11;
+    box-shadow: var(--box-shadow);
+}
 
 /* GUESS INPUT SECTION */
 .heroSection_box_dropdown{
@@ -85,24 +118,23 @@
     padding: 2rem;
 } */
 
+/* WINSCREEN POPUP STYLING */
 
 .winScreen{
     width: 100%;
     display: flex;
     text-align: center;
+    justify-content: center;
 }
 
 .winScreen_box{
-    box-shadow: var(--box-shadow);
-    background-color: var(--main-bg-color);
+    position: fixed;
+    z-index: 2222;
+    top: 8 rem;
     padding: 2rem;
     border-radius: 2rem;
-    z-index: 2222;
-    margin: 3rem auto;
-    top: 5rem;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, 0);
+    box-shadow: var(--box-shadow);
+    background-color: var(--main-bg-color);
 }
 
 .winScreen_btn_X{
@@ -137,18 +169,19 @@
 }
 
 .winScreen_box_submit_win button{
-    background-color: var(--main-bg-color);
-    box-shadow: var(--box-shadow);
+    background-color: var(--icons-color);
+    color: var(--main-bg-color);
     border: 1px solid black;
     border-radius: 2rem;
     padding: 1rem;
     width: 10rem;
-
+    
     cursor: pointer;
 }
 
 .winScreen_box_submit_win button:hover{
-    transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in;
+    box-shadow: var(--box-shadow);
     scale: 1.1;
 }
 
