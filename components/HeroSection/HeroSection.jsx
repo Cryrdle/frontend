@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import Image from 'next/image'
 import { GoFlame, GoInfo, GoFile, GoX } from 'react-icons/go'
 import { FaCrown, FaCog } from 'react-icons/fa'
@@ -9,7 +9,7 @@ import Style from './HeroSection.module.css'
 import StyleWin from '../GuessBar/GuessBar.module.css'
 import coins from './../GuessBar/CoinStatsIndex'
 import images from '../../img'
-import { GuessBar, Dropdown } from '../componentsindex'
+import { GuessBar, Dropdown, VisualAid } from '../componentsindex'
 import {
     Leaderboard,
     Streak,
@@ -18,10 +18,16 @@ import {
     Help,
 } from '../OptionsBar/optionsBarComponentsIndex'
 
+//--IMPORT FROM SMART CONTRACT
+import { CryrdleContext } from '../../Context/CryrdleContext'
+
 const guessesArray = []
 var answer = coins['LTC']
 
 const HeroSection = () => {
+    // smart contract context functions
+    const { connectWallet, joinTodaysCryrdle } = useContext(CryrdleContext)
+
     // display states
     const [leaderboard, setLeaderboard] = useState(false)
     const [streak, setStreak] = useState(false)
@@ -29,11 +35,13 @@ const HeroSection = () => {
     const [darkMode, setDarkMode] = useState(false)
     const [updates, setUpdates] = useState(false)
     const [help, setHelp] = useState(false)
+    const [visAid, setVisAid] = useState(true)
     // guess/game states
     const [winScreen, setWinScreen] = useState(false) // show win screen
     const [winGame, setWinGame] = useState(false) // show win screen
     const [guesses, setGuesses] = useState([])
     const [connected, setConnected] = useState(false)
+    const [paidToday, setPaidToday] = useState(false) // check user paid today on chain
 
     // display functions
     const closeAll = () => {
@@ -59,14 +67,6 @@ const HeroSection = () => {
             setStreak(false)
         }
     }
-    const openSettings = () => {
-        if (!settings) {
-            closeAll()
-            setSettings(true)
-        } else {
-            setSettings(false)
-        }
-    }
     const openUpdates = () => {
         if (!updates) {
             closeAll()
@@ -83,17 +83,26 @@ const HeroSection = () => {
             setHelp(false)
         }
     }
-    const showWinScreen = () => {
-        setWinScreen(true)
+
+    const handleConnectWallet = async () => {
+        try {
+            await connectWallet()
+            setConnected(true)
+            handleParticipationPayment()
+        } catch (error) {
+            console.log(error)
+        }
     }
-    const closeWinScreen = () => {
-        setWinScreen(false)
-    }
-    const connectWallet = () => {
-        setConnected(true)
-    }
-    const toggleDarkMode = () => {
-        setDarkMode(!darkMode)
+
+    const handleParticipationPayment = async () => {
+        try {
+            var payParticipationFee = await joinTodaysCryrdle()
+            if (payParticipationFee) {
+                setPaidToday(true)
+            }
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     const handleSelectedOption = (selectedOption) => {
@@ -116,7 +125,6 @@ const HeroSection = () => {
         'Price',
         'Age',
     ]
-
     return (
         <div className={Style.heroSection}>
             <div className={Style.heroSection_box}>
@@ -135,9 +143,7 @@ const HeroSection = () => {
                     <div className={Style.winScreen}>
                         <div className={Style.winScreen_box}>
                             <div className={Style.winScreen_btn_X}>
-                                <button>
-                                    <GoX onClick={closeWinScreen} />
-                                </button>
+                                <GoX onClick={() => setWinScreen(false)} />
                             </div>
                             <div className={Style.winScreen_box_congrats}>
                                 <h1>Congratulations!</h1>
@@ -220,14 +226,14 @@ const HeroSection = () => {
                         <div className={Style.heroSection_box_icons}>
                             <FiMoon
                                 className={Style.heroSection_box_icons_icon_fi}
-                                onClick={toggleDarkMode}
+                                onClick={() => setDarkMode(!darkMode)}
                             />
                         </div>
                     ) : (
                         <div className={Style.heroSection_box_icons}>
                             <FiSun
                                 className={Style.heroSection_box_icons_icon_fi}
-                                onClick={toggleDarkMode}
+                                onClick={() => setDarkMode(!darkMode)}
                             />
                         </div>
                     )}
@@ -259,25 +265,42 @@ const HeroSection = () => {
                     <div className={Style.heroSection_box_connect}>
                         <button
                             className={Style.heroSection_box_connect_btn}
-                            onClick={connectWallet}
+                            onClick={() => {
+                                handleConnectWallet()
+                            }}
                         >
-                            Connect Wallet
+                            Connect and Play Today's Cryrdle!
                         </button>
                     </div>
                 ) : !winGame ? (
                     // show guess dropdown and take guesses
                     <div className={Style.heroSection_box_dropdown}>
-                        <Dropdown
-                            onGuessMade={handleSelectedOption}
-                            checkWin={handleCheckWin}
-                        />
+                        {paidToday ? (
+                            <Dropdown
+                                onGuessMade={handleSelectedOption}
+                                checkWin={handleCheckWin}
+                            />
+                        ) : (
+                            <div className={Style.heroSection_box_connect}>
+                                <button
+                                    className={
+                                        Style.heroSection_box_connect_btn_pay
+                                    }
+                                    onClick={() => {
+                                        handleParticipationPayment()
+                                    }}
+                                >
+                                    Click to Pay to Play!
+                                </button>
+                            </div>
+                        )}
                     </div>
                 ) : (
                     // show win screen
                     <div className={Style.heroSection_box_connect}>
                         <button
                             className={Style.heroSection_box_connect_btn}
-                            onClick={showWinScreen}
+                            onClick={() => setWinScreen(true)}
                         >
                             Show Win Screen
                         </button>
@@ -304,6 +327,15 @@ const HeroSection = () => {
                     </div>
                 ))}
             </div>
+
+            {/* basic visual aid */}
+            {visAid && (
+                <div className={Style.heroSection_box_visualAid}>
+                    <div className={Style.heroSection_box_visualAid_box}>
+                        <VisualAid onClose={() => setVisAid(false)} />
+                    </div>
+                </div>
+            )}
 
             {/* check if daily guess limit has been reached  */}
         </div>
