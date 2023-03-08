@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Select from 'react-select'
 import { GoArrowRight } from 'react-icons/go'
 
@@ -23,18 +23,7 @@ const dropdownStyle = {
 
 var answer = coins['LTC']
 
-const options = [
-    { value: 'BTC', label: 'Bitcoin BTC' },
-    { value: 'ADA', label: 'Cardano ADA' },
-    { value: 'DOGE', label: 'DogeCoin DOGE' },
-    { value: 'ETH', label: 'Ethereum ETH' },
-    { value: 'LTC', label: 'Litecoin LTC' },
-    { value: 'DOT', label: 'Polkadot DOT' },
-    { value: 'XRP', label: 'Ripple XRP' },
-    { value: 'UNI', label: 'Uniswap UNI' },
-]
-
-const Dropdown = ({ onGuessMade, checkWin }) => {
+const Dropdown = ({ onGuessMade, checkWin, coinsList }) => {
     const [selectedOption, setSelectedOption] = useState(null)
 
     const handleChange = (selected) => {
@@ -52,7 +41,7 @@ const Dropdown = ({ onGuessMade, checkWin }) => {
         <div className={Style.dropdown_box}>
             <div className={Style.dropdown_box_left}>
                 <Select
-                    options={options}
+                    options={coinsList}
                     onChange={handleChange}
                     placeholder="Enter your guess..."
                     isClearable={true}
