@@ -1,0 +1,35 @@
+.optionsBar{
+    width: 100%;
+    margin: 0 auto;
+}
+
+.optionsBar_box{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    /* grid-template-columns: repeat(5, 1fr); */
+
+}
+
+.optionsBarbox_icons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 1rem;
+    gap: 2rem;
+}
+
+.optionsBar_box_icons_icon_fi,
+.optionsBar_box_icons_icon{
+    font-size: 2rem;
+    cursor: pointer;
+}
+.optionsBar_box_icons_icon_fi:hover,
+.optionsBar_box_icons_icon:hover{
+    transition: all 0.1s ease-in;
+    scale: 1.1;
+}
+
+.optionsBar_box_icons_icon_fi{
+    margin-top: 0.7rem;
+}
