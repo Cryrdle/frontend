@@ -1,0 +1,38 @@
+.header{
+  width: 100%;
+}
+
+.header_box{
+  margin: 0 auto;
+  width: 80%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 2rem;
+}
+
+.header_box_left_empty{}
+
+.header_box_middle_logo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header_box_right_connect{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.heroSection_box_connect_btn{
+  color: var(--icons-color);
+  border: 1px solid var(--icons-color);
+  border-radius: 5rem;
+  padding: 0.8rem 1.5rem;
+  cursor: pointer;
+}
+
+.heroSection_box_connect_btn:hover{
+  transition: all 0.3s ease-in-out;
+  scale: 0.95;
+}
