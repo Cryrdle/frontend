@@ -1,14 +1,13 @@
 import React, { useState } from 'react'
-import { GoFlame, GoInfo, GoFile, GoX } from 'react-icons/go'
+import { GoFlame, GoInfo, GoFile } from 'react-icons/go'
 import { FaCrown } from 'react-icons/fa'
-import { FiSun, FiMoon } from 'react-icons/fi'
+import { DarkMode } from '../componentsindex'
 
 // --INTERNAL IMPORT
 import Style from './OptionsBar.module.css'
 import {
     Leaderboard,
     Streak,
-    Settings,
     Updates,
     Help,
 } from '../OptionsBar/optionsBarComponentsIndex'
@@ -19,8 +18,6 @@ const OptionsBar = () => {
     // display states
     const [leaderboard, setLeaderboard] = useState(false)
     const [streak, setStreak] = useState(false)
-    const [settings, setSettings] = useState(false)
-    const [darkMode, setDarkMode] = useState(false)
     const [updates, setUpdates] = useState(false)
     const [help, setHelp] = useState(false)
 
@@ -28,7 +25,6 @@ const OptionsBar = () => {
     const closeAll = () => {
         setLeaderboard(false)
         setStreak(false)
-        setSettings(false)
         setUpdates(false)
         setHelp(false)
     }
@@ -79,21 +75,22 @@ const OptionsBar = () => {
                         onClick={openStreak}
                     />
                     {streak && <Streak />}
-                    {!darkMode ? (
+                    <DarkMode />
+                    {/* {theme == 'light' ? (
                         <div className={Style.optionsBar_box_icons}>
                             <FiMoon
                                 className={Style.optionsBar_box_icons_icon_fi}
-                                onClick={() => setDarkMode(!darkMode)}
+                                onClick={() => setTheme('dark')}
                             />
                         </div>
                     ) : (
                         <div className={Style.optionsBar_box_icons}>
                             <FiSun
                                 className={Style.optionsBar_box_icons_icon_fi}
-                                onClick={() => setDarkMode(!darkMode)}
+                                onClick={() => setTheme('light')}
                             />
                         </div>
-                    )}
+                    )} */}
                     <GoFile
                         className={Style.optionsBar_box_icons_icon}
                         onClick={openUpdates}
