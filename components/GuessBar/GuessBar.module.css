@@ -24,27 +24,42 @@
 }
 
 .guessBar_correct{
-    padding: 2rem 0rem;
+    width: 5rem;
+    height: 5rem;
     border: 1px solid;
+    border-radius: 0.5rem;
     background-color: lightgreen;
-    /* -webkit-text-fill-color: white; */
+}
+.guessBar_incorrect{
+    width: 5rem;
+    height: 5rem;
+    border: 1px solid;
+    border-radius: 0.5rem;
+    background-color: salmon;
+}
+.guessBar_correct_box,
+.guessBar_incorrect_box{
+    display: grid;
+    margin-top: -0.5rem;
 }
 
-.guessBar_incorrect{
-    border: 1px solid;
-    background-color: salmon;
-    /* -webkit-text-fill-color: white; */
-    
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    justify-content: center;
+.guessBar_correct p{
+    padding-top: 0.5rem;
+    /* color: white; */
+}
+.guessBar_incorrect p{
+    padding: 0 .5rem 0 .5rem;
+    line-height: 1;
+    /* color: white; */
 }
 
 .guessBar_incorrect span{
     padding-top: 2rem;
     color: white;
 }
-
 .guessBar_incorrect_arrow{
     font-size: 2rem;
+    margin-top: -1rem;
+    justify-self: center;
+    fill: maroon;
 }

@@ -1,6 +1,7 @@
-import '@/styles/globals.css'
-
 //--INTERNAL IMPORTS
+// import '../public/styles/global.css'
+import '../styles/globals.css'
+
 import { CryrdleProvider } from '../Context/CryrdleContext'
 import { Header, Footer } from '../components/componentsindex'
 

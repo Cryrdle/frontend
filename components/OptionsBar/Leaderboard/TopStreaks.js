@@ -26,8 +26,6 @@ const topDailyStreaks = playerData
     .sort((a, b) => b.dailyStreak - a.dailyStreak)
     .slice(0, 3)
 
-console.log(topDailyStreaks)
-
 const topWinStreaks = playerData
     .sort((a, b) => b.winStreak - a.winStreak)
     .slice(0, 3)

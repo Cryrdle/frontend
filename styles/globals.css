@@ -24,10 +24,10 @@ This projects does its own styling, but there are frameworks available for this
   --main-bg-color: #4c5773;
   --icons-color: #ecf0f3;
   --icons-light-color: #4c577341;
-  --icons-bg-color: #e2e6e9;
-  --shadow-dark-color: #d3dae7;
-  --bg-shadow-dark-color: #e4e4e4;
-  --shadow-light-color: #fff;
+  --icons-bg-color: #353c50;
+  --shadow-dark-color: #353c50;
+  --bg-shadow-dark-color: #353c50;
+  --shadow-light-color: #68769a;
 
   --box-shadow: 1rem 1rem 1rem var(--shadow-dark-color),
   -.5rem -.5rem .5rem var(--shadow-light-color);
@@ -99,7 +99,7 @@ img {
 
 ::-webkit-scrollbar-thumb{
   border-radius: 2rem;
-  background:  var(--icons-color);
+  background:  var(--icons-bg-color);
   width: .5rem;
 }
 
@@ -112,7 +112,7 @@ img {
     background: var(--main-bg-color);
   }
   :root{
-    --main-bg-color: red;
+    --main-bg-color: #ecf0f3;
     --icons-color: #4c5773;
     --icons-light-color: #4c577341;
     --icons-bg-color: #e2e6e9;

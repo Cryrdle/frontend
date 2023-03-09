@@ -138,6 +138,7 @@ export const CryrdleProvider = ({ children }) => {
             value={{
                 checkIfUserIsConnected,
                 connectWallet,
+                currentAccount,
                 joinTodaysCryrdle,
             }}
         >
