@@ -6,6 +6,8 @@ import { GoArrowRight } from 'react-icons/go'
 import Style from './Dropdown.module.css'
 import coins from './../GuessBar/CoinStatsIndex'
 
+const COINS_URL = 'http://localhost:3999/api/v1/coins'
+
 const dropdownStyle = {
     option: (base, state) => ({
         ...base,
@@ -32,8 +34,11 @@ const Dropdown = ({ onGuessMade, checkWin, coinsList }) => {
 
     const handleClick = () => {
         if (selectedOption) {
-            onGuessMade(selectedOption.value)
-            checkWin(coins[selectedOption.value] == answer)
+            onGuessMade(selectedOption.symbol)
+            checkWin(coins[selectedOption.symbol] == answer)
+            // TODO: NEED TO ADD ADDRESS ACCOUNT FIRST + ADD GAME PERIODS
+            // Axios.post(`${COINS_URL}/${selectedOption.symbol}`).then(
+            //     (response) => {console.log(response)})
         }
     }
 

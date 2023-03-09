@@ -1,0 +1,173 @@
+
+.hero{
+    width: 100%;
+
+    height: 100vh;
+    /* background-image: url("https://static.news.bitcoin.com/wp-content/uploads/2021/07/unnamed.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: sticky; */
+}
+
+.hero_box{
+    width: 80%;
+    margin: 0 auto;
+
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero_box_message{
+    border: 1px solid;
+    padding: 1rem;
+    border-radius: .5rem;
+    text-align: center;
+    line-height: 1rem;
+    margin: 2rem 0;
+}
+
+/* CONNECT BUTTON */
+.hero_box_connect{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero_box_connect_btn{
+    background-color: var(--icons-color);
+    color: var(--main-bg-color);
+    /* border: none; */
+    border: 1px solid black;
+    border-radius: 5rem;
+    padding: 1rem;
+    width: 90%;
+    cursor: pointer;
+}
+
+.hero_box_connect_btn:hover{
+    transition: all 0.3s ease-in;
+    scale: 1.11;
+    box-shadow: var(--box-shadow);
+}
+
+.hero_box_pay_btn{
+    background-color: var(--main-bg-color);
+    color: var(--icons-color);
+    border: none;
+    border-radius: 5rem;
+    padding: 1rem;
+    width: 100%;
+    cursor: pointer;
+}
+
+/* GUESS INPUT SECTION */
+.hero_box_dropdown{
+    border: 1px solid;
+    border-radius: 5rem;
+}
+
+/* GUESSES + REVEAL SECTION */
+.hero_guessBar_headers_box{
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.hero_guessBar_headers{
+    width: 60%;
+    border-bottom: 1px dashed;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    padding: 1rem;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+/* .hero_box_guesses{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+} */
+
+/* WINSCREEN POPUP STYLING */
+
+.winScreen{
+    width: 100%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.winScreen_box{
+    position: fixed;
+    z-index: 2222;
+    top: 8 rem;
+    padding: 2rem;
+    border-radius: 2rem;
+    box-shadow: var(--box-shadow);
+    background-color: var(--main-bg-color);
+}
+
+.winScreen_btn_X{
+    display: flex;
+    justify-content: flex-end;
+    font-size: 1.5rem;
+    margin-bottom: -2rem;
+    cursor: pointer;
+}
+
+.winScreen_btn_X button{ 
+    border: none;
+    border-radius: 50%;
+    background-color: var(--main-bg-color);
+    font-size: 1.5rem;
+    margin-bottom: -2rem;
+    cursor: pointer;
+}
+
+.winScreen_box_congrats h1{
+    font-size: 2.5rem;
+}
+
+.winScreen_box_congrats h3{
+    font-size: 1.5rem;
+}
+
+.winScreen_box_congrats p{
+    font-size: 1rem;
+    line-height: 0.5rem;
+}
+
+.winScreen_box_submit_win{
+    padding: 2rem;
+}
+hero_box_connect_btn_pay
+.winScreen_box_submit_win button{
+    background-color: var(--icons-color);
+    color: var(--main-bg-color);
+    border: 1px solid black;
+    border-radius: 2rem;
+    padding: 1rem;
+    width: 10rem;
+    
+    cursor: pointer;
+}
+
+.winScreen_box_submit_win button:hover{
+    transition: all 0.3s ease-in;
+    box-shadow: var(--box-shadow);
+    scale: 1.1;
+}
+
+.winScreen_box_LB_list{
+    line-height: 0.5rem;
+}
+
+.winScreen_box_LB_list_item{
+    padding: .1rem 
+}
