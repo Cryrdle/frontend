@@ -1,23 +1,47 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { GoArrowUp, GoArrowDown } from 'react-icons/go'
 
 // --INTERNAL IMPORT
 import Style from './GuessBar.module.css'
-import coins from './CoinStatsIndex'
+const USERS_URL = 'http://localhost:3999/api/v1/users'
 
-var answer = coins['LTC']
+//--IMPORT FROM SMART CONTRACT
+import { CryrdleContext } from '../../Context/CryrdleContext'
 
 const GuessBar = ({ guess }) => {
+    const { currentAccount } = useContext(CryrdleContext)
+
+    const checkGuess = async () => {
+        try {
+            const res = await Axios.post(
+                `${USERS_URL}/${currentAccount}`,
+                guess
+            )
+            console.log(res.data)
+            return res.data
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
     return (
         <div className={Style.guessBar}>
             <div className={Style.guessBar_box}>
                 <div className={Style.guessBar_box_guesses}>
-                    {coins[guess].map((el, i) =>
-                        el == answer[i] ? (
+                    {/* TODO: REDO LOGIC TO FOR JSON, COMPARE KEYVALUE PAIR */}
+                    {/* MAP WINNING ANSWER, LOOP CATEGORIES FOR EACH GUESS v WINNER */}
+                    {/* THIS SHOULD ALL BE DONE IN THE BACKEND ACTUALLY */}
+                    {/* 
+                    - make post request to backend with guess
+                    - backend compares guess to winning coin
+                    */}
+                    checkGuess()
+                    {/* {guess.map((el, i) =>
+                        el == winningCoin[i] ? (
                             <div className={Style.guessBar_correct}>
                                 <span>{el}</span>
                             </div>
-                        ) : el > answer[i] && i >= 3 ? (
+                        ) : el > winningCoin[i] && i >= 3 ? (
                             // too high (and not the first 3 - ToDo)
                             <div className={Style.guessBar_incorrect}>
                                 <span>{el}</span>
@@ -26,7 +50,7 @@ const GuessBar = ({ guess }) => {
                                     className={Style.guessBar_incorrect_arrow}
                                 />
                             </div>
-                        ) : el < answer[i] && i >= 3 ? (
+                        ) : el < winningCoin[i] && i >= 3 ? (
                             // too low (and not the first 3 - ToDo)
                             <div className={Style.guessBar_incorrect}>
                                 <span>{el}</span>
@@ -41,7 +65,7 @@ const GuessBar = ({ guess }) => {
                                 <span>{el}</span>
                             </div>
                         )
-                    )}
+                    )} */}
                 </div>
             </div>
         </div>
